@@ -6,6 +6,7 @@ import { api } from "@/utils/api";
 
 import "@/styles/globals.css";
 import Head from "next/head";
+import { Sidebar } from "@/components/Sidebar";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -21,8 +22,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="container mx-auto flex">
-        <Component {...pageProps} />
+      <div className="container mx-auto flex items-start sm:pr-4">
+        <Sidebar />
+        <div className="min-h-screen flex-grow border-x">
+          <Component {...pageProps} />
+        </div>
       </div>
     </SessionProvider>
   );
