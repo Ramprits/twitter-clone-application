@@ -7,20 +7,20 @@ export function Sidebar() {
   return (
     <nav className="sticky top-0 px-2 py-4">
       <ul className="flex flex-col items-start gap-2 whitespace-nowrap">
-        <li>
+        <li className="p-2">
           <Link href="/">Home</Link>
         </li>
-        {user !== null && (
-          <li className="">
+        {(user !== undefined || user !== null) && (
+          <li className="p-2">
             <Link href={`/profile/${user?.id}`}>Profile</Link>
           </li>
         )}
-        {user !== null ? (
-          <li>
+        {user !== undefined ? (
+          <li className="p-2">
             <button onClick={() => void signOut()}>Logout</button>
           </li>
         ) : (
-          <li>
+          <li className="p-2">
             <button onClick={() => void signIn()}>Login</button>
           </li>
         )}
