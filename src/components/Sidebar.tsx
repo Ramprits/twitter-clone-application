@@ -1,5 +1,6 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { IconHoverEffect } from "./IconHoverEffect";
 
 export function Sidebar() {
   const session = useSession();
@@ -8,11 +9,15 @@ export function Sidebar() {
     <nav className="sticky top-0 px-2 py-4">
       <ul className="flex flex-col items-start gap-2 whitespace-nowrap">
         <li className="p-2">
-          <Link href="/">Home</Link>
+          <Link href="/">
+            <IconHoverEffect>Home</IconHoverEffect>
+          </Link>
         </li>
         {(user !== undefined || user !== null) && (
           <li className="p-2">
-            <Link href={`/profile/${user?.id}`}>Profile</Link>
+            <IconHoverEffect>
+              <Link href={`/profile/${user?.id}`}>Profile</Link>
+            </IconHoverEffect>
           </li>
         )}
         {user !== undefined ? (
